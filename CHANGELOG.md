@@ -15,9 +15,11 @@ All notable public showcase updates are documented here. This changelog describe
 - Ensured a failed verified-snapshot capture can never be reported as successful, even inside conditional shell workflows.
 - Made abnormal-exit restore quarantine checks deterministic by assigning test lock ownership to one exact process.
 - Added a database-enforced release fuse as a third safety layer for the bounded snapshot window, without changing global server policy.
-- Bound database encryption and approval fingerprints to immutable certificate snapshots so one capture cannot mix trust generations.
+- Bound encryption, signing fingerprints, and every operational approval check to immutable certificate snapshots so one operation cannot mix trust generations.
 - Extended the full security workflow to exact version-tag pushes, tying release evidence to the tagged commit.
 - Recorded the bounded-availability authorization while keeping capture blocked behind independent storage, release, signing, and host-readiness gates.
+- Strengthened database safety tests to prove lock acquisition and release remain bounded with monotonic timing, without changing global server policy or unrelated sessions.
+- Made deliberate process-suspension cleanup bounded and verified that release-tag security jobs cannot be silently skipped.
 
 ## 0.1.0 - 2026-07-14
 
