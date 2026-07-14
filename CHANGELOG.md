@@ -7,6 +7,7 @@ All notable public showcase updates are documented here. This changelog describe
 ### Changed
 
 - Isolated Linux security fixtures from runner-level ACL metadata while preserving mandatory ACL-negative coverage and fail-closed path validation.
+- Made encrypted-key fixtures portable across supported OpenSSL versions by generating explicit 16-byte PBKDF2 salts without weakening validation.
 
 ## 0.1.0 - 2026-07-14
 
