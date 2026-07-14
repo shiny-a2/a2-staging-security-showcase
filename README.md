@@ -39,13 +39,14 @@ Cryptographic roles are separated by purpose. Capture, finalization, and restore
 
 The independent staging topology, data-sanitization policy, service sandboxing, and cache/session separation have been reviewed as a design contract. An executable staging builder and sanitizer are not part of this release.
 
-The production environment remains unchanged. The bounded-availability authorization has been recorded. Execution remains intentionally blocked until all of the following are available:
+The production environment remains unchanged. The bounded-availability authorization has been recorded. Production capture remains intentionally blocked until all of the following are available:
 
-- an independent off-server backup destination;
-- successful restore proof from that destination;
+- a successfully probed independent off-server backup destination;
 - a green tagged release;
 - fresh signed one-time operating material; and
 - successful host-readiness checks.
+
+After encrypted capture and independent read-back, a successful disposable restore proof from that destination remains mandatory before staging work can proceed.
 
 ## Engineering outcomes
 
