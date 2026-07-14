@@ -8,6 +8,7 @@ All notable public showcase updates are documented here. This changelog describe
 
 - Isolated Linux security fixtures from runner-level ACL metadata while preserving mandatory ACL-negative coverage and fail-closed path validation.
 - Made encrypted-key fixtures portable across supported OpenSSL versions by generating explicit 16-byte PBKDF2 salts without weakening validation.
+- Made isolated MariaDB safety attestation portable across supported runners while preserving strict fail-closed validation.
 
 ## 0.1.0 - 2026-07-14
 
