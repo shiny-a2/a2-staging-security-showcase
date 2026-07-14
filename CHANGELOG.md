@@ -2,6 +2,12 @@
 
 All notable public showcase updates are documented here. This changelog describes security outcomes without exposing private infrastructure or customer information.
 
+## Unreleased
+
+### Changed
+
+- Isolated Linux security fixtures from runner-level ACL metadata while preserving mandatory ACL-negative coverage and fail-closed path validation.
+
 ## 0.1.0 - 2026-07-14
 
 ### Added
