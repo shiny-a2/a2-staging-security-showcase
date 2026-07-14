@@ -1,0 +1,36 @@
+# Local operating-system and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Environment and credential material
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.csr
+
+# Backup, database, and evidence artifacts
+*.sql
+*.dump
+*.bak
+*.backup
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.log
+backups/
+evidence/
+artifacts/
+
+# Test and tool output
+.cache/
+coverage/
+__pycache__/
+*.pyc
