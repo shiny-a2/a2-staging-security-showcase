@@ -13,6 +13,7 @@ All notable public showcase updates are documented here. This changelog describe
 - Made long-lived MariaDB session markers immediately observable without changing lock, privilege, or timeout policy.
 - Made the MariaDB recovery test mirror real read-only backup behavior, avoiding an unnecessary table-lock permission.
 - Ensured a failed verified-snapshot capture can never be reported as successful, even inside conditional shell workflows.
+- Made abnormal-exit restore quarantine checks deterministic by assigning test lock ownership to one exact process.
 
 ## 0.1.0 - 2026-07-14
 
