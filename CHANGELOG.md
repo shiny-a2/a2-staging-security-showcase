@@ -20,6 +20,7 @@ All notable public showcase updates are documented here. This changelog describe
 - Recorded the bounded-availability authorization while keeping capture blocked behind independent storage, release, signing, and host-readiness gates.
 - Strengthened database safety tests to prove lock acquisition and release remain bounded with monotonic timing, without changing global server policy or unrelated sessions.
 - Made deliberate process-suspension cleanup bounded and verified that release-tag security jobs cannot be silently skipped.
+- Updated an isolated database-contention test to model a real write in progress while leaving all Production code, privileges, and data unchanged.
 
 ## 0.1.0 - 2026-07-14
 
