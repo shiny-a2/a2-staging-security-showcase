@@ -8,6 +8,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 GATE_PATH = ROOT / "scripts" / "privacy-gate.py"
+WORKFLOW_PATH = ROOT / ".github" / "workflows" / "privacy.yml"
 SPEC = importlib.util.spec_from_file_location("showcase_privacy_gate", GATE_PATH)
 GATE = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = GATE
@@ -38,6 +39,14 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
         self.assertEqual(
             self.rules(b"fixture.example.test 192.0.2.25 2001:db8::25"), set()
         )
+
+    def test_release_tags_run_the_complete_privacy_gate(self) -> None:
+        workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
+
+        self.assertIn('tags:\n      - "v*"', workflow)
+        self.assertIn("fetch-depth: 0", workflow)
+        self.assertIn("python3 scripts/privacy-gate.py", workflow)
+        self.assertIn("python3 tests/test-privacy-gate.py", workflow)
 
 
 if __name__ == "__main__":

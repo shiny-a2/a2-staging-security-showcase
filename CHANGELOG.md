@@ -4,6 +4,10 @@ All notable public showcase updates are documented here. This changelog describe
 
 ## Unreleased
 
+No changes yet.
+
+## 0.1.0 - 2026-07-17
+
 ### Changed
 
 - Isolated Linux security fixtures from runner-level ACL metadata while preserving mandatory ACL-negative coverage and fail-closed path validation.
@@ -21,8 +25,6 @@ All notable public showcase updates are documented here. This changelog describe
 - Strengthened database safety tests to prove lock acquisition and release remain bounded with monotonic timing, without changing global server policy or unrelated sessions.
 - Made deliberate process-suspension cleanup bounded and verified that release-tag security jobs cannot be silently skipped.
 - Updated an isolated database-contention test to model a real write in progress while leaving all Production code, privileges, and data unchanged.
-
-## 0.1.0 - 2026-07-14
 
 ### Added
 
@@ -43,5 +45,6 @@ All notable public showcase updates are documented here. This changelog describe
 ### Status
 
 - Production remains unchanged.
-- Production execution remains blocked pending an independent off-server destination, successful restore proof, and explicit availability approval.
+- Production capture remains blocked pending an independent off-server destination, fresh signed one-time operating material, and successful host-readiness checks.
+- A disposable restore proof from independent read-back remains mandatory after capture.
 - The executable staging builder and data sanitizer remain future work.
