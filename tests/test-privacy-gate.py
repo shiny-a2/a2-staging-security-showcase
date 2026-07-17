@@ -59,8 +59,10 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
         )
 
     def assert_release_workflow(self, workflow: str) -> None:
-        push = self.workflow_block(workflow, "  push:")
-        privacy = self.workflow_block(workflow, "  privacy:")
+        events = self.workflow_block(workflow, "on:")
+        jobs = self.workflow_block(workflow, "jobs:")
+        push = self.workflow_block(events, "  push:")
+        privacy = self.workflow_block(jobs, "  privacy:")
         active_privacy_lines = [
             line.strip()
             for line in privacy.splitlines()
@@ -93,6 +95,8 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
     def test_release_workflow_rejects_suppression_mutations(self) -> None:
         workflow = WORKFLOW_PATH.read_text(encoding="utf-8")
         mutations = {
+            "missing event parent": workflow.replace("on:\n", "off:\n", 1),
+            "commented event parent": workflow.replace("on:\n", "# on:\n", 1),
             "missing push event": workflow.replace(
                 "  push:", "  workflow_dispatch:", 1
             ),
@@ -102,6 +106,8 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
                 "        # run: python3 scripts/privacy-gate.py",
                 1,
             ),
+            "missing jobs parent": workflow.replace("jobs:\n", "disabled-jobs:\n", 1),
+            "commented jobs parent": workflow.replace("jobs:\n", "# jobs:\n", 1),
             "disabled job": workflow.replace(
                 "  privacy:\n", "  privacy:\n    if: false\n", 1
             ),
