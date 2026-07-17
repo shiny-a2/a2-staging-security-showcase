@@ -80,7 +80,7 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
         )
         self.assertFalse(
             any(
-                re.match(r"^(?:if|continue-on-error)\s*:", line)
+                re.match(r"^(?:if|continue-on-error|needs|shell)\s*:", line)
                 for line in active_privacy_lines
             )
         )
@@ -117,6 +117,22 @@ class ShowcasePrivacyGateTests(unittest.TestCase):
                 "        continue-on-error: true\n",
                 1,
             ),
+            "suppressed step shell": workflow.replace(
+                "      - name: Reject sensitive showcase content\n",
+                "      - name: Reject sensitive showcase content\n"
+                "        shell: true {0}\n",
+                1,
+            ),
+            "skipped job dependency": workflow.replace(
+                "jobs:\n",
+                "jobs:\n"
+                "  skipped:\n"
+                "    if: false\n"
+                "    runs-on: ubuntu-24.04\n"
+                "    steps:\n"
+                "      - run: true\n",
+                1,
+            ).replace("  privacy:\n", "  privacy:\n    needs: skipped\n", 1),
             "shell suppression": workflow.replace(
                 "run: python3 scripts/privacy-gate.py",
                 "run: python3 scripts/privacy-gate.py || true",
