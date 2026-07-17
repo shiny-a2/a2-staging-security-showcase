@@ -25,6 +25,7 @@ No changes yet.
 - Strengthened database safety tests to prove lock acquisition and release remain bounded with monotonic timing, without changing global server policy or unrelated sessions.
 - Made deliberate process-suspension cleanup bounded and verified that release-tag security jobs cannot be silently skipped.
 - Updated an isolated database-contention test to model a real write in progress while leaving all Production code, privileges, and data unchanged.
+- Required the public privacy workflow on release tags and added regression coverage against silent gate suppression.
 
 ### Added
 
