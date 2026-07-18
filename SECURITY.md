@@ -13,6 +13,8 @@ The descriptions here are intentionally outcome-oriented. Detailed operating pro
 - Separate signing purposes and scope approvals to a single intended operation.
 - Bind fresh, privacy-filtered destination-readiness evidence to applicable one-time approvals before high-impact recovery work can begin.
 - Require conditional probe creation, bounded read-back, narrow cleanup, and fail-closed replay handling without publishing provider details.
+- Keep provider credentials outside orchestration and public evidence.
+- Treat destination independence and credential isolation as separately reviewed operator attestations, never as conclusions inferred from a generic transport probe.
 - Validate restores in a disposable isolated environment before considering a backup usable.
 - Preserve auditable evidence without exposing secrets or personal information.
 - Quarantine ambiguous database or recovery state until independent clearance is proven.

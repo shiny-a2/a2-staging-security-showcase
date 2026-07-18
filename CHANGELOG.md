@@ -18,6 +18,7 @@ No changes yet.
 ### Status
 
 - No external storage was provisioned, no provider credentials were handled, and no real destination was probed by this release.
+- Provider-neutral software does not automatically prove physical destination independence; that property remains separately attested and reviewed.
 - Production backup, restore, staging, and migration remain blocked behind the independent destination, tagged verification, host-readiness, and restore-proof gates.
 - The executable staging builder and data sanitizer remain future work.
 

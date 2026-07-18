@@ -40,13 +40,15 @@ flowchart LR
 
 Cryptographic roles are separated by purpose. Capture, finalization, and restore validation remain distinct operations, each with explicit evidence and failure boundaries.
 
+The coordinator verifies only observable transport behavior. Physical destination independence and credential isolation remain separately reviewed operator attestations; provider-neutral software does not present them as cryptographic conclusions.
+
 ## Scope boundary
 
 The independent staging topology, data-sanitization policy, service sandboxing, and cache/session separation have been reviewed as a design contract. An executable staging builder and sanitizer are not part of this release.
 
 One exact sensitive-export access path was contained and independently verified while storefront and product browsing remained healthy. No customer payload was read, no broad cache flush was used, and orders, users, application data, plugin state, and checkout behavior were unchanged.
 
-The bounded-availability authorization has been recorded. No external destination or provider credentials were supplied or probed in this release. Production capture remains intentionally blocked until all of the following are available:
+The bounded-availability authorization has been recorded. No external destination was configured and no provider credentials were supplied or probed in this release. Production capture remains intentionally blocked until all of the following are available:
 
 - an independently reviewed destination and a fresh successful readiness probe for the applicable phase;
 - a green tagged release;
