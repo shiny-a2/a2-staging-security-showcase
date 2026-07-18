@@ -2,12 +2,14 @@
 
 This public showcase documents a security-focused recovery foundation for a live commerce platform. It intentionally contains no production source code, customer data, infrastructure identifiers, credentials, or sensitive operating details.
 
-Version `0.1.1` adds a narrowly scoped incident-containment milestone to the backup and restore safety foundation. It is not a claim that an independent staging environment has already been built or that backup, restore, or migration execution has begun.
+Version `0.1.2` adds an operator-attested destination-readiness gate to the backup and restore safety foundation. It does not provision external storage, handle provider credentials, or claim that backup, restore, staging, or migration execution has begun.
 
 ## What is implemented
 
 - Fail-closed orchestration for encrypted, streaming backups across mixed transactional and non-transactional database workloads.
 - Purpose-separated signing identities and narrowly scoped, one-time operational approvals.
+- Fresh, privacy-filtered destination-readiness evidence bound to each applicable one-time authorization before recovery provisioning or capture can begin.
+- Provider-neutral probe coordination with conditional object creation, bounded independent read-back, exact integrity comparison, narrow cleanup, and replay prevention.
 - Signed inventories and evidence that allow backup and restore decisions to be audited without publishing private infrastructure details.
 - Disposable, isolated restore validation designed to prove that database and file artifacts are usable together.
 - Automated contract, crypto-policy, failure-path, and workflow tests suitable for continuous integration.
@@ -28,7 +30,8 @@ The implementation avoids plaintext backup artifacts and treats incomplete, unve
 
 ```mermaid
 flowchart LR
-    S[Source environment] -->|encrypted streaming capture| B[Signed backup set]
+    G[Operator-attested destination gate] --> S[Source environment]
+    S -->|encrypted streaming capture| B[Signed backup set]
     C[Signed inventory and one-time approvals] --> B
     B --> O[Independent off-server destination]
     O --> R[Disposable isolated restore]
@@ -43,9 +46,9 @@ The independent staging topology, data-sanitization policy, service sandboxing, 
 
 One exact sensitive-export access path was contained and independently verified while storefront and product browsing remained healthy. No customer payload was read, no broad cache flush was used, and orders, users, application data, plugin state, and checkout behavior were unchanged.
 
-The bounded-availability authorization has been recorded. Production capture remains intentionally blocked until all of the following are available:
+The bounded-availability authorization has been recorded. No external destination or provider credentials were supplied or probed in this release. Production capture remains intentionally blocked until all of the following are available:
 
-- a successfully probed independent off-server backup destination;
+- an independently reviewed destination and a fresh successful readiness probe for the applicable phase;
 - a green tagged release;
 - fresh signed one-time operating material; and
 - successful host-readiness checks.
@@ -54,6 +57,6 @@ After encrypted capture and independent read-back, a successful disposable resto
 
 ## Engineering outcomes
 
-This milestone demonstrates how to turn a high-risk infrastructure change into a reviewable sequence of small gates, including a monotonic emergency control that cannot casually restore an unsafe state. The design favors recoverability, verifiable authorization, minimal secret exposure, and accurate status reporting over premature deployment.
+This milestone demonstrates how to turn a high-risk infrastructure change into a reviewable sequence of small gates, including conditional destination checks, one-time authorization binding, and a monotonic emergency control that cannot casually restore an unsafe state. The design favors recoverability, verifiable authorization, minimal secret exposure, and accurate status reporting over premature deployment.
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes and [SECURITY.md](SECURITY.md) for the public disclosure policy.
