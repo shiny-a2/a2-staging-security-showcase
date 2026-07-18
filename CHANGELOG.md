@@ -6,6 +6,27 @@ All notable public showcase updates are documented here. This changelog describe
 
 No changes yet.
 
+## 0.1.1 - 2026-07-18
+
+### Security
+
+- Contained one verified legacy sensitive-export exposure with an exact-name HTTP denial while leaving unrelated assets untouched.
+- Published the control atomically with exact pre-change binding, metadata preservation, root-only recovery evidence, and idempotent fail-closed behavior.
+- Added regression coverage for unsafe links, inherited ACLs, extended attributes, concurrent replacement, incomplete evidence, malformed markers, and accidental payload access.
+- Designed the control as monotonic: the tool can add protection but cannot remove it or re-expose the protected artifact.
+
+### Verification
+
+- Confirmed denial at both the public edge and origin without reading the protected payload.
+- Confirmed the storefront and product archive remained healthy after containment.
+- Required no broad cache purge and made no order, user, checkout, plugin-state, or application-data change.
+
+### Status
+
+- Emergency HTTP containment is active and verified.
+- Production backup, restore, staging, and migration remain blocked behind their existing independent gates.
+- The executable staging builder and data sanitizer remain future work.
+
 ## 0.1.0 - 2026-07-17
 
 ### Changed
@@ -45,7 +66,7 @@ No changes yet.
 
 ### Status
 
-- Production remains unchanged.
+- At the time of the `0.1.0` milestone, Production remained unchanged.
 - Production capture remains blocked pending an independent off-server destination, fresh signed one-time operating material, and successful host-readiness checks.
 - A disposable restore proof from independent read-back remains mandatory after capture.
 - The executable staging builder and data sanitizer remain future work.

@@ -15,7 +15,8 @@ The descriptions here are intentionally outcome-oriented. Detailed operating pro
 - Preserve auditable evidence without exposing secrets or personal information.
 - Quarantine ambiguous database or recovery state until independent clearance is proven.
 - Bind destructive cleanup to an exact disposable process identity rather than a mutable socket or PID-file path.
-- Keep production unchanged until prerequisites and explicit approval gates are satisfied.
+- Keep production changes narrowly scoped, explicitly authorized, independently verified, and fail closed when prerequisites are incomplete.
+- Prefer monotonic emergency controls that cannot silently restore a proven exposure.
 
 ## Reporting a security concern
 
@@ -25,4 +26,4 @@ Include only the minimum information needed to reproduce the concern safely. Pub
 
 ## Supported version
 
-The current documented showcase version is `0.1.0`.
+The current documented showcase version is `0.1.1`.
