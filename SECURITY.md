@@ -11,6 +11,10 @@ The descriptions here are intentionally outcome-oriented. Detailed operating pro
 - Fail closed when authorization, artifact integrity, environment isolation, or evidence is incomplete.
 - Encrypt backup data while streaming and avoid persistent plaintext intermediates.
 - Separate signing purposes and scope approvals to a single intended operation.
+- Bind fresh, privacy-filtered destination-readiness evidence to applicable one-time approvals before high-impact recovery work can begin.
+- Require conditional probe creation, bounded read-back, narrow cleanup, and fail-closed replay handling without publishing provider details.
+- Keep provider credentials outside orchestration and public evidence.
+- Treat destination independence and credential isolation as separately reviewed operator attestations, never as conclusions inferred from a generic transport probe.
 - Validate restores in a disposable isolated environment before considering a backup usable.
 - Preserve auditable evidence without exposing secrets or personal information.
 - Quarantine ambiguous database or recovery state until independent clearance is proven.
@@ -26,4 +30,4 @@ Include only the minimum information needed to reproduce the concern safely. Pub
 
 ## Supported version
 
-The current documented showcase version is `0.1.1`.
+The current documented showcase version is `0.1.2`.

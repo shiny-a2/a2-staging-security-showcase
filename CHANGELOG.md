@@ -6,6 +6,22 @@ All notable public showcase updates are documented here. This changelog describe
 
 No changes yet.
 
+## 0.1.2 - 2026-07-18
+
+### Security
+
+- Added a provider-neutral, operator-attested destination-readiness gate before recovery provisioning or capture.
+- Bound fresh privacy-filtered readiness evidence to the applicable one-time signed authorization.
+- Required conditional creation, bounded independent read-back, exact integrity agreement, narrow cleanup, and one-time evidence consumption.
+- Added adversarial coverage for stale, malformed, replayed, cross-scope, replaced, and mismatched readiness evidence.
+
+### Status
+
+- No external storage was provisioned, no provider credentials were handled, and no real destination was probed by this release.
+- Provider-neutral software does not automatically prove physical destination independence; that property remains separately attested and reviewed.
+- Production backup, restore, staging, and migration remain blocked behind the independent destination, tagged verification, host-readiness, and restore-proof gates.
+- The executable staging builder and data sanitizer remain future work.
+
 ## 0.1.1 - 2026-07-18
 
 ### Security
