@@ -2,7 +2,7 @@
 
 This public showcase documents a security-focused recovery foundation for a live commerce platform. It intentionally contains no production source code, customer data, infrastructure identifiers, credentials, or sensitive operating details.
 
-Version `0.1.0` is an implementation milestone for backup and restore safety. It is not a claim that an independent staging environment has already been built or that production execution has begun.
+Version `0.1.1` adds a narrowly scoped incident-containment milestone to the backup and restore safety foundation. It is not a claim that an independent staging environment has already been built or that backup, restore, or migration execution has begun.
 
 ## What is implemented
 
@@ -18,6 +18,8 @@ Version `0.1.0` is an implementation milestone for backup and restore safety. It
 - Authentication-before-parsing rules for signed approvals, archived trust, and recovery metadata.
 - Least-privilege checks that reject inherited, delegable, or indirect backup permissions.
 - Early, independently verified destruction of short-lived decryption material on failure paths.
+- Monotonic HTTP containment for one proven legacy sensitive-export exposure, applied without reading the protected payload or broadening the block to unrelated assets.
+- Atomic configuration publication with exact pre-change binding, root-only evidence, metadata preservation, idempotency, and fail-closed race and ACL handling.
 - A repository-wide privacy gate covering current files, Git history, commit messages, and annotated tags before public publication.
 
 The implementation avoids plaintext backup artifacts and treats incomplete, unverifiable, ambiguously authorized, or process-identity-conflicted states as failures.
@@ -39,7 +41,9 @@ Cryptographic roles are separated by purpose. Capture, finalization, and restore
 
 The independent staging topology, data-sanitization policy, service sandboxing, and cache/session separation have been reviewed as a design contract. An executable staging builder and sanitizer are not part of this release.
 
-The production environment remains unchanged. The bounded-availability authorization has been recorded. Production capture remains intentionally blocked until all of the following are available:
+One exact sensitive-export access path was contained and independently verified while storefront and product browsing remained healthy. No customer payload was read, no broad cache flush was used, and orders, users, application data, plugin state, and checkout behavior were unchanged.
+
+The bounded-availability authorization has been recorded. Production capture remains intentionally blocked until all of the following are available:
 
 - a successfully probed independent off-server backup destination;
 - a green tagged release;
@@ -50,6 +54,6 @@ After encrypted capture and independent read-back, a successful disposable resto
 
 ## Engineering outcomes
 
-This milestone demonstrates how to turn a high-risk infrastructure change into a reviewable sequence of small, reversible gates. The design favors recoverability, verifiable authorization, minimal secret exposure, and accurate status reporting over premature deployment.
+This milestone demonstrates how to turn a high-risk infrastructure change into a reviewable sequence of small gates, including a monotonic emergency control that cannot casually restore an unsafe state. The design favors recoverability, verifiable authorization, minimal secret exposure, and accurate status reporting over premature deployment.
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes and [SECURITY.md](SECURITY.md) for the public disclosure policy.
