@@ -62,3 +62,10 @@ After encrypted capture and independent read-back, a successful disposable resto
 This milestone demonstrates how to turn a high-risk infrastructure change into a reviewable sequence of small gates, including conditional destination checks, one-time authorization binding, and a monotonic emergency control that cannot casually restore an unsafe state. The design favors recoverability, verifiable authorization, minimal secret exposure, and accurate status reporting over premature deployment.
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes and [SECURITY.md](SECURITY.md) for the public disclosure policy.
+
+## Related Portfolio
+
+- Portfolio: https://amiraliyaghouti.com
+- Projects: https://amiraliyaghouti.com/projects.html
+- Case studies: https://amiraliyaghouti.com/case-studies.html
+- GitHub profile: https://github.com/shiny-a2
